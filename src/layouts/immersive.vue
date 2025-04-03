@@ -1,0 +1,9 @@
+<template>
+  <v-main>
+    <router-view />
+  </v-main>
+</template>
+
+<style scoped lang="sass">
+
+</style>
