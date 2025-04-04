@@ -111,11 +111,11 @@ const songs = new Array(10).fill(null)
             />
           </div>
         </div>
-        <div v-if="column.hasMore">
-          <div class="flex items-center">
+        <div v-if="column.hasMore" class="flex-1">
+          <div class="flex items-center justify-space-between">
             <div class="flex-1 truncate">{{ item.title }}</div>
             <div>
-              <v-btn variant="text" color="#ff6900" class="px-10px! py-4px! min-w-unset! h-fit!">
+              <v-btn variant="text" color="#ff6900" class="px-10px! py-7px! min-w-unset! h-fit!">
                 <v-icon
                   icon="mdi-dots-horizontal"
                   size="16"
