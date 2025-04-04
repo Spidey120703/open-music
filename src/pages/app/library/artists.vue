@@ -1,5 +1,7 @@
 <script setup lang="ts">
 
+const router = useRouter()
+
 const { setTitle } = inject<any>('navbar')
 setTitle('艺人')
 
@@ -19,45 +21,39 @@ setTitle('艺人')
       color="#ff6900"
     >
       <v-list-item
-        v-for="i in 50"
+        v-for="i in 20"
         :key="`item-${i}`"
         :value="`item-${i}`"
         class="pa-8px!"
       >
         <div class="flex items-center">
-          <v-avatar image="/src/assets/avatar.jpg" />
-          <div class="ml-8px">Spidey</div>
+          <v-avatar image="/src/assets/artist-avatar.jpg" />
+          <div class="ml-8px">Coldplay</div>
         </div>
       </v-list-item>
     </v-list>
     <div class="flex-1 pa-36px overflow-y-auto overflow-x-hidden">
       <div class="top-title">
-        <div class="flex justify-space-between items-center">
-          <div class="flex items-center">
-            <div class="text-20px font-weight-bold cursor-pointer">Spidey</div>
-            <v-icon icon="mdi-chevron-right" :size="26" class="opacity-60" />
-          </div>
-          <div class="flex items-center gap-4px">
-            <v-btn variant="text" color="#ff6900" class="px-10px! py-4px! min-w-unset! h-fit!">
-              <v-icon icon="mdi-play" size="16" />
-            </v-btn>
-            <v-btn variant="text" color="#ff6900" class="px-10px! py-4px! min-w-unset! h-fit!">
-              <v-icon icon="mdi-shuffle" size="16" />
-            </v-btn>
-            <v-btn variant="text" color="#ff6900" class="px-10px! py-4px! min-w-unset! h-fit!">
-              <v-icon icon="mdi-star-outline" size="16" />
-            </v-btn>
-            <v-btn variant="text" color="#ff6900" class="px-10px! py-4px! min-w-unset! h-fit!">
-              <v-icon icon="mdi-dots-horizontal" size="16" />
-            </v-btn>
-          </div>
-        </div>
+        <SectionTitle title="Coldplay" has-more @more="router.push('./artist/1')">
+          <v-btn variant="text" color="#ff6900" class="px-10px! py-4px! min-w-unset! h-fit!">
+            <v-icon icon="mdi-play" size="16" />
+          </v-btn>
+          <v-btn variant="text" color="#ff6900" class="px-10px! py-4px! min-w-unset! h-fit!">
+            <v-icon icon="mdi-shuffle" size="16" />
+          </v-btn>
+          <v-btn variant="text" color="#ff6900" class="px-10px! py-4px! min-w-unset! h-fit!">
+            <v-icon icon="mdi-star-outline" size="16" />
+          </v-btn>
+          <v-btn variant="text" color="#ff6900" class="px-10px! py-4px! min-w-unset! h-fit!">
+            <v-icon icon="mdi-dots-horizontal" size="16" />
+          </v-btn>
+        </SectionTitle>
         <v-divider class="my-6px" />
         <div class="opacity-50 text-12px font-weight-bold">12 张专辑，34 首歌曲</div>
       </div>
       <div>
         <AlbumPreviewCard
-          v-for="i in 12"
+          v-for="i in 8"
           :key="`c-${i}`"
         />
       </div>

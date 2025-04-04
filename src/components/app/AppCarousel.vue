@@ -12,12 +12,16 @@ const props = withDefaults(defineProps<{
   minCardWidth?: number
   labelTop?: number
   labelBottom?: number
+  rows?: number
+  rowGap?: number
 }>(), {
   totalSize: 0,
   gap: 8,
   minCardWidth: 300,
   labelTop: 0,
   labelBottom: 0,
+  rows: 1,
+  rowGap: 36
 })
 
 const swiperRef = ref();
@@ -70,10 +74,16 @@ const onSwiper = (swiper: unknown) => {
       @swiper="onSwiper"
     >
       <swiper-slide
-        v-for="index in props.totalSize"
+        v-for="index in Math.ceil(totalSize / rows)"
         :key="index"
       >
-        <slot :index="index" />
+        <div
+          v-for="col in rows"
+          :key="`item-${index * rows + col}`"
+          :style="{ marginBottom: col < rows ? `${rowGap}px` : '0' }"
+        >
+          <slot :index="index * rows + col - 1" />
+        </div>
       </swiper-slide>
     </swiper>
 

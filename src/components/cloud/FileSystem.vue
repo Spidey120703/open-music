@@ -1,12 +1,12 @@
 <script setup lang="ts">
 
-import PathBreadcrumbs from "./path-breadcrumbs.vue";
+import PathBreadcrumbs from "./PathBreadcrumbs.vue";
 
 import {NativeTypes} from 'react-dnd-html5-backend'
 import {type DropTargetMonitor, useDrop} from 'vue3-dnd'
 import {computed, unref} from 'vue'
 
-import Item from "./item.vue";
+import CloudItem from "./CloudItem.vue";
 import { FILE_ITEM } from "./types";
 import { getChildren, type ItemRecord } from "@/components/cloud/fs";
 import {emitter} from "@/utils/emitter";
@@ -130,7 +130,7 @@ onUnmounted(() => {
       @enter="enter"
     />
     <div class="file-viewer z-2 h-0px">
-      <Item
+      <CloudItem
         v-for="item in itemList"
         :id="item.id"
         :key="`item-${item.id}`"

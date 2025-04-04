@@ -43,7 +43,7 @@ const router = useRouter()
 
     <div class="app-player-main rd-4px flex">
       <div
-        class="w-54px h-54px ma-1px rd-4px cursor-pointer overflow-hidden relative"
+        class="w-54px h-54px ma-1px rd-lt-4px rd-lb-4px cursor-pointer overflow-hidden relative"
         @click="router.push('/player')"
       >
         <v-img

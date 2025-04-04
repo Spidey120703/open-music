@@ -1,5 +1,7 @@
 <script setup lang="ts">
 
+const router = useRouter()
+
 const lyrics = reactive([
   'When life leaves you high and dry',
   'I\'ll be at your door tonight',
@@ -73,7 +75,7 @@ const lyrics = reactive([
           </div>
           <div class="text-18px opacity-60 text-center">
             <AutoMarquee>
-              <span>Phillip Phillips<v-divider class="inline-block! w-1.5em h-1em opacity-100 my-.25em mx-.5em" />The World From the Side of the Moon (Deluxe Version)</span>
+              <span>Phillip Phillips<v-divider class="inline-block! w-1.25em h-1em opacity-100 my-.25em mx-.5em" />The World From the Side of the Moon (Deluxe Version)</span>
             </AutoMarquee>
           </div>
         </div>
@@ -164,12 +166,21 @@ const lyrics = reactive([
           v-for="(line, i) in lyrics"
           :key="`line-${i}`"
           v-ripple
-          class="text-36px font-weight-bold inline-block py-6px px-16px rd-8px cursor-pointer mb-24px"
+          class="text-36px font-weight-bold inline-block py-6px px-16px rd-8px cursor-pointer mb-48px"
         >
           {{ line }}
         </div>
       </div>
     </div>
+  </div>
+  <div class="fixed top-0 left-0 right-0 z-20000 flex justify-center">
+    <v-btn
+      variant="plain"
+      class="px-0px! w-80px! h-36px! min-w-unset! bg-transparent"
+      @click="router.back()"
+    >
+      <v-icon icon="mdi-chevron-up" size="36" color="rgb(246,246,246)" />
+    </v-btn>
   </div>
 </template>
 

@@ -12,7 +12,7 @@ const router = useRouter()
 onMounted(() => {
   console.log("Hello World");
   setTimeout(() => {
-    router.push('/sign-in')
+    router.push('sign-in')
   }, 1500)
 });
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import {getChildren} from "@/components/cloud/fs";
-import DropBreadcrumb from "@/components/cloud/drop-breadcrumb.vue";
+import DropBreadcrumb from "@/components/cloud/DropBreadcrumb.vue";
 import type {FileItemEntity} from "@/components/cloud/types";
 
 const pathStack = defineModel<FileItemEntity[]>()

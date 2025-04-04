@@ -3,7 +3,7 @@
 import { DndProvider } from 'vue3-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 
-import FileSystem from "@/components/cloud/file-system.vue";
+import FileSystem from "@/components/cloud/FileSystem.vue";
 
 </script>
 

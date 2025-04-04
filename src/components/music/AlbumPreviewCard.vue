@@ -22,7 +22,7 @@ import SongList from "@/components/music/SongList.vue";
 
         <div class="flex justify-space-between items-center px-8px">
           <div class="text-14px font-weight-bold opacity-50">Pop<span class="inline-block w-.25em h-.25em rd-full bg-current vertical-mid mx-.25em" />2012</div>
-          <div class="flex items-center gap-4px">
+          <div class="flex items-center gap-10px px-3px">
             <v-btn variant="text" color="#ff6900" class="px-10px! py-4px! min-w-unset! h-fit!">
               <v-icon icon="mdi-arrow-down" size="16" />
             </v-btn>
@@ -33,7 +33,7 @@ import SongList from "@/components/music/SongList.vue";
         </div>
       </div>
       <div class="py-8px">
-        <SongList />
+        <SongList columns="no,title,duration,like,download,more" hide-header />
       </div>
     </div>
   </div>
