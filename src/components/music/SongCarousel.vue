@@ -1,6 +1,5 @@
 <script setup lang="ts">
 
-import AlbumCard from "@/components/music/AlbumCard.vue";
 import AppCarousel from "@/components/app/AppCarousel.vue";
 
 </script>
@@ -16,6 +15,7 @@ import AppCarousel from "@/components/app/AppCarousel.vue";
   >
     <template #default="{ index }">
       <div
+        :id="index"
         class="hover-target flex items-center gap-12px w-100% overflow-hidden py-12px"
         style="border-top: 1px solid rgba(0,0,0,.12)"
       >
@@ -28,13 +28,15 @@ import AppCarousel from "@/components/app/AppCarousel.vue";
             :height="42"
             aspect-ratio="square"
           />
-          <div class="hover-show transition-opacity bg-#00000066 absolute inset-0 flex justify-center items-center">
-            <v-icon
-              icon="mdi-play"
-              :size="24"
-              color="white"
-              style="text-shadow: 0 0 8px white"
-            />
+          <div class="hover-show bg-#00000066 absolute inset-0">
+            <div class="flex justify-center items-center w-100% h-100%">
+              <v-icon
+                icon="mdi-play"
+                :size="24"
+                color="white"
+                style="text-shadow: 0 0 8px white"
+              />
+            </div>
           </div>
         </div>
         <div class="text-14px flex-1 hover-change">
@@ -60,11 +62,11 @@ import AppCarousel from "@/components/app/AppCarousel.vue";
   .hover-change
     width: calc(100% - 110px)
   .hover-show
-    opacity: 0
+    display: none
   &:hover
     .hover-change
       width: calc(100% - 162px)
     .hover-show
-      opacity: 1
+      display: block
 
 </style>

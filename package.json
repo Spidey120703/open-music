@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@mdi/font": "7.4.47",
-    "@wangeditor/editor-for-vue": "^5.1.12",
     "core-js": "^3.37.1",
     "dayjs": "^1.11.13",
     "mitt": "^3.0.1",

@@ -29,7 +29,7 @@ import AlbumCarousel from "@/components/music/AlbumCarousel.vue";
             >
               <div
                 class="absolute left-0 bottom-0 right-0 h-48px pa-12px c-white flex items-center justify-center"
-                style="background: rgba(0,0,0,.64); backdrop-filter: blur(32px);"
+                style="background: rgba(0,0,0,.45); backdrop-filter: blur(32px);"
               >
                 <div>酷玩即将到来！</div>
               </div>
