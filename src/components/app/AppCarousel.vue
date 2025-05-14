@@ -42,6 +42,8 @@ const next = () => {
 const $swiper = ref()
 const onSwiper = (swiper: unknown) => {
   $swiper.value = swiper
+  $swiper.value.activeIndex = 0
+  // console.log()
 }
 
 </script>
@@ -75,7 +77,7 @@ const onSwiper = (swiper: unknown) => {
     >
       <swiper-slide
         v-for="index in Math.ceil(totalSize / rows)"
-        :key="index"
+        :key="`swiper-slide-${index}`"
       >
         <div
           v-for="col in rows"

@@ -26,6 +26,7 @@ const opened = computed(() => recentList.value.map((_, i) => i))
   >
     <v-expansion-panel
       v-for="({ label, count }, index) in recentList"
+      :key="label"
       :value="index"
     >
       <template #title>

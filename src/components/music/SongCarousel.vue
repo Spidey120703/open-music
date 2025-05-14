@@ -9,7 +9,6 @@ import AppCarousel from "@/components/app/AppCarousel.vue";
     :gap="16"
     :total-size="10"
     :min-card-width="280"
-    :label-bottom="64"
     :rows="3"
     :row-gap="0"
   >

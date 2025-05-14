@@ -3,9 +3,9 @@ import AlbumCarousel from "@/components/music/AlbumCarousel.vue";
 import SongCarousel from "@/components/music/SongCarousel.vue";
 
 const route = useRoute()
-const albumId = route.params.id
+const artistId = (route.params as any).id
 
-console.log(albumId)
+console.log(artistId)
 </script>
 
 <template>

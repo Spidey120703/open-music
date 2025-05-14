@@ -2,7 +2,7 @@
 const route = useRoute()
 const router = useRouter()
 
-const albumId = route.params.id
+const albumId = (route.params as any).id
 
 console.log(albumId)
 </script>

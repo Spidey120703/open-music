@@ -1,8 +1,8 @@
 <script setup lang="ts">
 const route = useRoute()
-const albumId = route.params.id
+const playlistId = (route.params as any).id
 
-console.log(albumId)
+console.log(playlistId)
 </script>
 
 <template>

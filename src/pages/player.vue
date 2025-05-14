@@ -106,7 +106,7 @@ const lyrics = reactive([
           />
           <div class="text-12px flex justify-space-between">
             <div>00:00</div>
-            <div>00:00</div>
+            <div>03:29</div>
           </div>
         </div>
         <div class="flex items-center">

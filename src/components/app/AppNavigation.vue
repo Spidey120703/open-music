@@ -38,6 +38,8 @@ const parent = computed(() => selected.value[0].slice(0, selected.value[0].index
 const searchRef = ref()
 const focusSearch = () => {
   rail.value = false
+  expandOnHover.value = rail.value
+  isHovering.value = false
   const search = searchRef.value.$el?.querySelector('input') as HTMLInputElement
   setTimeout(() => {
     search.focus()
@@ -108,7 +110,7 @@ watch(isHovering, (val) => {
           </div>
         </v-list-item>
         <v-list-item>
-          <v-btn variant="flat" class="px-10px! min-w-unset! mr--4px" @click="rail = ! rail">
+          <v-btn variant="flat" class="px-10px! min-w-unset! mr--4px" @click="rail = ! rail, fakeExpanding = false">
             <v-icon icon="mdi-menu" />
           </v-btn>
         </v-list-item>
@@ -191,7 +193,7 @@ watch(isHovering, (val) => {
               <template #append="{ isOpen }">
                 <v-btn
                   variant="flat"
-                  class="px-0px! min-w-unset! w-24px h-24px! mr-6px highlight-btn"
+                  class="px-0px! min-w-unset! w-24px h-24px! mr-6px highlight-btn c-inherit!"
                   @click.stop
                 >
                   <v-icon icon="mdi-plus" />
@@ -274,9 +276,9 @@ watch(isHovering, (val) => {
       .v-icon::before
         color: #7a7a7a !important
 
-.v-navigation-drawer.v-navigation-drawer--rail
+.v-navigation-drawer
   .v-list.app-menu
-    .v-list-group.active
+    .v-list-group.active:not(.v-list-group--open)
       .v-list-group__header
         color: rgb(255, 105, 0) !important
         :deep(.v-list-item__overlay)

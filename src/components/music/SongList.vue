@@ -49,14 +49,24 @@ const $headers = computed(() => {
 console.log($headers.value)
 
 
-const songs = new Array(10).fill(null)
-  .map((_, i) => ({
-    no: i + 1,
-    cover: '/src/assets/album-cover.jpg',
-    title: `歌曲${i + 1}`,
-    duration: '03:04',
-    like: Math.random() > .5,
-  }))
+// const songs = new Array(10).fill(null)
+//   .map((_, i) => ({
+//     no: i + 1,
+//     cover: '/src/assets/album-cover.jpg',
+//     title: `歌曲${i + 1}`,
+//     duration: '03:04',
+//     like: Math.random() > .5,
+//   }))
+
+const songs = [
+  { no: 1, cover: '/src/assets/album-cover.jpg', title: 'Man On the Moon', duration: '03:35', like: false },
+  { no: 2, cover: '/src/assets/album-cover.jpg', title: 'Home', duration: '03:30', like: true },
+  { no: 3, cover: '/src/assets/album-cover.jpg', title: 'Gone, Gone, Gone', duration: '03:29', like: true },
+  { no: 4, cover: '/src/assets/album-cover.jpg', title: 'Hold On', duration: '04:11', like: false },
+  { no: 5, cover: '/src/assets/album-cover.jpg', title: 'Tell Me A Story', duration: '04:21', like: false },
+  { no: 6, cover: '/src/assets/album-cover.jpg', title: 'Get Up Get Down', duration: '03:16', like: false },
+  { no: 7, cover: '/src/assets/album-cover.jpg', title: 'Where We Came From', duration: '03:33', like: false },
+]
 
 </script>
 
