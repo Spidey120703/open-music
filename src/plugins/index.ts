@@ -12,6 +12,10 @@ import router from '../router'
 // Types
 import type { App } from 'vue'
 
+
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+pinia.use(piniaPluginPersistedstate)
+
 export function registerPlugins (app: App) {
   app
     .use(vuetify)

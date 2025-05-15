@@ -14,6 +14,7 @@ declare module 'vue' {
     AppCarousel: typeof import('./components/app/AppCarousel.vue')['default']
     AppFooter: typeof import('./components/app/AppFooter.vue')['default']
     AppNavigation: typeof import('./components/app/AppNavigation.vue')['default']
+    AppSnackbar: typeof import('./components/app/AppSnackbar.vue')['default']
     AppTopPlayer: typeof import('./components/app/AppTopPlayer.vue')['default']
     AppWelcome: typeof import('./components/app/AppWelcome.vue')['default']
     AutoMarquee: typeof import('./components/common/auto-marquee.vue')['default']

@@ -4,15 +4,13 @@ import EmojiPicker from 'vue3-emoji-picker'
 import 'vue3-emoji-picker/css'
 
 
-const emojiPickerShow = ref(false)
-
 const textareaRef = ref()
+const textarea = computed<HTMLTextAreaElement>(() =>
+  (textareaRef.value.$el as HTMLDivElement)
+    ?.querySelector('textarea') as HTMLTextAreaElement)
 
 const onSelectEmoji = (emoji: any) => {
-  const textarea = (textareaRef.value.$el as HTMLDivElement).querySelector('textarea')
-  if (! textarea) return;
-
-  const { selectionStart, selectionEnd } = textarea;
+  const { selectionStart, selectionEnd } = unref(textarea);
 
   const content = postContent.value
   postContent.value =
@@ -22,9 +20,13 @@ const onSelectEmoji = (emoji: any) => {
 
   setTimeout(() => {
     const newPos = selectionStart + emoji.i.length
-    textarea.focus()
-    textarea.setSelectionRange(newPos, newPos)
+    unref(textarea).focus()
+    unref(textarea).setSelectionRange(newPos, newPos)
   })
+}
+
+const handleEmojiPickerOut = () => {
+  unref(textarea).focus()
 }
 
 const postContent = ref<string>('')
@@ -59,33 +61,42 @@ withDefaults(defineProps<{
     />
     <div class="pt-4px relative">
       <v-btn
-        :variant="emojiPickerShow ? 'tonal' : 'flat'"
+        variant="flat"
         class="px-0px! w-32px! h-32px! min-w-unset! bg-transparent mr-8px"
-        @click="emojiPickerShow = !emojiPickerShow"
+        @click="textarea.focus()"
       >
         <v-icon icon="mdi-emoticon-happy-outline" />
+        <v-overlay
+          activator="parent"
+          location-strategy="connected"
+          scroll-strategy="close"
+          opacity="0"
+          open-delay="0"
+          close-delay="0"
+          z-index="99999"
+          @click:outside="handleEmojiPickerOut"
+        >
+          <EmojiPicker
+            :native="true"
+            :static-texts="{
+              placeholder: '搜索表情',
+              skinTone: '肤色'
+            }"
+            :group-names="{
+              smileys_people: '笑脸与人物',
+              animals_nature: '动物与自然',
+              food_drink: '食物与饮品',
+              activities: '活动',
+              travel_places: '旅行与地点',
+              objects: '物品',
+              symbols: '符号',
+              flags: '旗帜',
+              recent: '最近使用'
+            }"
+            @select="onSelectEmoji"
+          />
+        </v-overlay>
       </v-btn>
-      <EmojiPicker
-        v-show="emojiPickerShow"
-        :native="true"
-        :static-texts="{
-          placeholder: '搜索表情',
-          skinTone: '肤色'
-        }"
-        :group-names="{
-          smileys_people: '笑脸与人物',
-          animals_nature: '动物与自然',
-          food_drink: '食物与饮品',
-          activities: '活动',
-          travel_places: '旅行与地点',
-          objects: '物品',
-          symbols: '符号',
-          flags: '旗帜',
-          recent: '最近使用'
-        }"
-        @select="onSelectEmoji"
-        class="ma-0! absolute left-0 z-100"
-      />
       <v-btn
         v-show="post"
         variant="flat"

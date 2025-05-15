@@ -1,5 +1,12 @@
 <script setup lang="ts">
 
+import md5 from 'crypto-js/md5'
+import {signIn} from "@/api/auth";
+import type {ApiError, ApiResponse} from "@/types";
+import {useAuthorizationStore} from "@/stores/authorization";
+import {useUserInfoStore} from "@/stores/user-info";
+import {useMessageStore} from "@/stores/message";
+
 const router = useRouter()
 
 withDefaults(defineProps<{
@@ -53,11 +60,17 @@ const testSignIn = () => {
   }, 0)
 
   if (state.value === SignInState.PasswordInput) {
-    if (signInForm.username === 'admin' && signInForm.password === 'admin') {
-      router.push('/app/home')
-    } else {
-      alert('账号或密码错误')
-    }
+    signIn({
+      username: signInForm.username,
+      password: md5(signInForm.password).toString(),
+    })
+      .then((res: ApiResponse<string>) => {
+        useMessageStore().success('登录成功')
+        useAuthorizationStore().setToken(res.data.data)
+        useUserInfoStore().refreshUserInfo()
+        router.push('/app/home')
+      })
+      .catch(() => {})
   }
 }
 
